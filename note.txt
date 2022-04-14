@@ -1,0 +1,18 @@
+- xác thực thông tin đăng kí là làm gì?
+/ xac thuc dung dinh dang email - chưa làm validate
+- Dùng jwt thì session mới được tạo lưu ở đâu bên phía server.
+/xong
+
+- api/cv/:cvid va add CV 
+nen đổi thành api/cv/
+với nội dung gửi lên server 
+{
+    ...data,
+    userId: 123
+}
+- Đang gặp lỗi ở addCV cứ thêm 2 cv giống nhau (ko thay đổi dữ liệu)
+-> thêm 2 lần liên tiếp ko đc 
+- nhưng restart server hoặc chèn thêm 1 cái khác vào thì lại ok
+
+- Chưa kiểm soát người xóa có userId có chùng với ownerId hay không
+//Da xong
