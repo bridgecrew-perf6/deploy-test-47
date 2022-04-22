@@ -1,4 +1,4 @@
-import { users, sessions } from "../config.js";
+import { users, sessions } from "../config/connectDatabase.js";
 
 export const getUsers = async (req, res) => {
   try {

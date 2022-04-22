@@ -1,17 +1,30 @@
 import { ObjectId } from "mongodb";
-import { cvDatas, users } from "../config.js";
+import { cvDatas, users } from "../config/connectDatabase.js";
 import { data_demo } from "../demo.js";
 
 // get all cv -> to developer
+// ten id, anh
+
 export const getCv = async (req, res) => {
   try {
-    const allCv = await cvDatas.find({}).toArray();
+    const allCv = await cvDatas.find({}, {metadata:1, imgUrl: 1}).toArray();
     res.status(200).json({ allCv });
   } catch (err) {
     res.status(500).json({ error: err });
     console.log("err:", err);
   }
 };
+
+export const getOneCv = async (req, res) => {
+  try {
+    const cvId = req.params.cvid;
+    const cv = await cvDatas.findOne({ _id: new ObjectId(cvId) });
+    res.status(200).json({ cv });
+  } catch (err) {
+    res.status(500).json({ error: err });
+    console.log("err:", err);
+  }
+}
 
 export const addCv = async (req, res) => {
   try {
@@ -32,7 +45,7 @@ export const addCv = async (req, res) => {
     );
     if (updated.modifiedCount)
       res.status(200).json({ message: "Add CV success" });
-    else res.status(400).json({ message: "Failed!" });
+    else res.status(400).json({ message: "failed" });
   } catch (err) {
     res.status(500).json({ error: err });
     console.log("err:", err);

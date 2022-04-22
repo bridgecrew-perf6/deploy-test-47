@@ -11,4 +11,4 @@ export const database = client.db("civizen_v3");
 export const users = database.collection("users");
 export const cvDatas = database.collection("cvDatas");
 export const sessions = database.collection("sessions");
-
+export const PRV = database.collection("PRV"); 

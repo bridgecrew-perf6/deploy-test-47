@@ -16,3 +16,14 @@ với nội dung gửi lên server
 
 - Chưa kiểm soát người xóa có userId có chùng với ownerId hay không
 //Da xong
+
+// Xong authentication middleware 
+(su dung signed cookie)
+// Xong Request validation
+Email verification
+// Sua get CV theo tat ca va theo cvid
+
+// dang nhap bang google xong
+
+// return ket qua tra ve trong getCv, getCVone; 
+- Chay chua on chua tra ve dung nhung truong mong muon
