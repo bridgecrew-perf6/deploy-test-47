@@ -10,10 +10,6 @@ router.post('/signin', signin);
 
 router.get('/signout', signout);
 
-router.get('/signin/auth', authenToken, (req, res) => {
-    res.status(200).json({message: "success"});
-});
-
 router.get('/verify_registration/:verificationToken', verifyRegistration);
 
 // for google Login

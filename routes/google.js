@@ -1,6 +1,7 @@
 import express from "express";
 import { users } from "../config/connectDatabase.js";
 import { verify } from "../config/googleLogin.js";
+import { isHaveUser } from "../controllers/auth.js";
 
 const router = express.Router();
 
@@ -36,7 +37,7 @@ router.post("/google/login", async (req, res) => {
     const token = req.body.credential;
     const user = await verify(token);
 
-    if (user) {
+    if (user && !isHaveUser(user.email)) {
       const newUser = await users.insertOne({
         email: user.email,
         password: null,

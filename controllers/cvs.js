@@ -1,14 +1,18 @@
 import { ObjectId } from "mongodb";
 import { cvDatas, users } from "../config/connectDatabase.js";
-import { data_demo } from "../demo.js";
+import { data_demo, mini_demo } from "../demo.js";
 
 // get all cv -> to developer
 // ten id, anh
 
-export const getCv = async (req, res) => {
+//chua sua duoc lay 1 so truong trong du lieu
+export const getAllCv = async (req, res) => {
   try {
-    const allCv = await cvDatas.find({}, {metadata:1, imgUrl: 1}).toArray();
-    res.status(200).json({ allCv });
+    const allCv = await cvDatas.find({}, {_id: 1}).toArray()
+    .then(data => {
+      console.log(data);
+    });
+    res.status(200).json({allCv});
   } catch (err) {
     res.status(500).json({ error: err });
     console.log("err:", err);
@@ -28,24 +32,24 @@ export const getOneCv = async (req, res) => {
 
 export const addCv = async (req, res) => {
   try {
-    const newCv = req.body.data || data_demo;
-    const userId = newCv.metadata.ownerId;
+    const newCv = req.body.data || mini_demo;
+    // const userId = newCv.metadata.ownerId;
     //Dang ton tai loi them 2 lan duplicate key
     const cv = await cvDatas.insertOne(newCv);
-    const cvId = String(cv.insertedId);
-    const user = await users.findOne({ _id: new ObjectId(userId) });
-    const updateUser = {
-      ...user,
-      cvDatas: [...user.cvDatas, cvId],
-    };
+    // const cvId = String(cv.insertedId);
+    // const user = await users.findOne({ _id: new ObjectId(userId) });
+    // const updateUser = {
+    //   ...user,
+    //   cvDatas: [...user.cvDatas, cvId],
+    // };
     // console.log({ updateUser });
-    const updated = await users.updateOne(
-      { _id: new ObjectId(userId) },
-      { $set: updateUser }
-    );
-    if (updated.modifiedCount)
-      res.status(200).json({ message: "Add CV success" });
-    else res.status(400).json({ message: "failed" });
+    // const updated = await users.updateOne(
+    //   { _id: new ObjectId(userId) },
+    //   { $set: updateUser }
+    // );
+    // if (updated.modifiedCount)
+    //   res.status(200).json({ message: "Add CV success" });
+    // else res.status(400).json({ message: "Failed!" });
   } catch (err) {
     res.status(500).json({ error: err });
     console.log("err:", err);

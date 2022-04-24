@@ -27,3 +27,12 @@ Email verification
 
 // return ket qua tra ve trong getCv, getCVone; 
 - Chay chua on chua tra ve dung nhung truong mong muon
+
+Tra lai _id, anh, ten CV trong database
+Tuan 3
+- Them goolge facebook,
+- song 5' PRv                                           // xong
+- Chuc nang chia trang 
+- Phan trang 
+- Phan update Cv, add Cv them phan xac thuc co the <scipt>
+- Xac thuc co dung nguoi dang khong

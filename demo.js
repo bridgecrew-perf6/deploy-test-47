@@ -1,3 +1,10 @@
+export const mini_demo = {
+  resumeName: "civizen",
+  imgUrl: 
+  "https://firebasestorage.googleapis.com/v0/b/civipro-4d091.appspot.com/o/templates%2FCastform.png?alt=media&token=c1b11a52-0d3d-4c1a-be97-08415fa49727",
+  demo: true
+}
+
 export const data_demo = {
   resumeName: "civizen",//lay cai nay
   templateId: "60d08ec6563b0766097b069e",

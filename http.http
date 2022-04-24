@@ -2,7 +2,7 @@
 POST http://localhost:8000/api/signup HTTP/1.1
 Content-Type: application/json
 
-{   "email": "dsitweed@gmail.com",
+{   "email": "123@gmail.com",
     "password": "12345678",
     "username" : "test1"
 }
@@ -47,7 +47,10 @@ POST http://localhost:8000/api/cv HTTP/1.1
 Content-Type: application/json
 
 {
-
+    "resumeName": "civizen",
+    "imgUrl": 
+    "https://firebasestorage.googleapis.com/v0/b/civipro-4d091.appspot.com/o/templates%2FCastform.png?alt=media&token=c1b11a52-0d3d-4c1a-be97-08415fa49727",
+    "demo": true
 }
 
 ### get all users
