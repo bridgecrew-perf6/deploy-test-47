@@ -67,8 +67,11 @@ export const signup = async (req, res) => {
               const deletePRV = await PRV.deleteOne({
                 _id: new ObjectId(newUser.insertedId)
               })
-            }, 1000 * 60 * 10);
-            res.status(200).json({ message: VERIFY_YOUR_ACCOUNT });
+            }, 1000 * 60 * 10); // milliseconds
+            res.status(200).json({ 
+              message: VERIFY_YOUR_ACCOUNT,
+              signinToken: signinToken
+            });
           }
         ); // end hash and save sign up infor -> PRV
       }
@@ -94,21 +97,26 @@ export const signin = async (req, res) => {
       res.status(400).json({ message: SIGN_FAILED });
       return;
     }
-
     if (check === true) {
       const userId = (await users.findOne({ email: email }))._id;
       // Add new session in dataBase
       const newSession = await sessions.insertOne({
-        userId: userId,
+        userId: userId
       });
-      // console.log(newSession.insertedId);
+      
+      // clear sesssion when cookie is expiresed
+      setTimeout(async () => {
+        const deleteSession = await sessions.deleteOne({
+          _id: new ObjectId(newSession.insertedId)
+        })
+      }, 1000 * 60 * 60); // milliseconds
       const secretStr = process.env.JWT_SECRET;
       const signinToken = jwt.sign(
         {
           userId: userId,
         },
         secretStr,
-        { expiresIn: "10000s" }
+        { expiresIn: 60 * 60 } // seconds
       );
 
       res
@@ -175,7 +183,8 @@ export const verifyRegistration = async (req, res) => {
     });
     if (result) {
       // check exits email
-      if (isHaveUser(result.email, result.password)) {
+      const check = await isHaveUser(result.email, result.password);
+      if ( check ) {
         res.status(401).json({ message: EXITS_EMAIL });
         return;
       }

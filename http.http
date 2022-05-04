@@ -10,6 +10,9 @@ Content-Type: application/json
 ### get all users
 GET http://localhost:8000/users/getusers HTTP/1.1
 
+### check logined
+GET http://localhost:8000/users/logined HTTP/1.1
+
 ### sign in
 POST http://localhost:8000/api/signin HTTP/1.1
 Content-Type: application/json
@@ -18,59 +21,65 @@ Content-Type: application/json
     "password": "123"
 }
 
+### get one id by cvid
+GET http://localhost:8000/api/cv/6267c4c221bd94c1f2328c06 HTTP/1.1
+
 ### get all cv for developer
 GET http://localhost:8000/api/cv HTTP/1.1
-
-### get 1 cv by id in Cvdabase
-GET http://localhost:8000/api/cv/6257ccc1007400021f64002f HTTP/1.1
 
 ### log out
 GET  http://localhost:8000/api/signout HTTP/1.1
 
-### api/signin/auth
-GET http://localhost:8000/api/signin/auth HTTP/1.1
-Content-Type: application/json
-
-{
-    "email": "123",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjUzZTQ2YzQzOGRlNDQyYjgxM2Q2NTUiLCJpYXQiOjE2NDk4MzcxOTcsImV4cCI6MTY0OTg0NzE5N30.7f_Yl44-2bGOnSy9K_EnlqEzmTduRoYpYHkzTy-6h8g"
-}
 
 ### get all sessions
 GET http://localhost:8000/users/getsession HTTP/1.1
 
-### 
-GET http://localhost:8000/api/cv HTTP/1.1
+### get all cv
+GET http://localhost:8000/api/cv/ HTTP/1.1
 
-### add 1 CV - chua hoan thien
+### get one id by cvid
+GET http://localhost:8000/api/cv/6267c4c221bd94c1f2328c06 HTTP/1.1
+
+### add 1 CV 
 POST http://localhost:8000/api/cv HTTP/1.1
 Content-Type: application/json
 
 {
-    "resumeName": "civizen",
+    "resumeName": "civizen4",
     "imgUrl": 
     "https://firebasestorage.googleapis.com/v0/b/civipro-4d091.appspot.com/o/templates%2FCastform.png?alt=media&token=c1b11a52-0d3d-4c1a-be97-08415fa49727",
-    "demo": true
+    "demo": true,
+    "metadata": {
+        "ownerId": "6257d971b921d0153805a5cd", 
+        "createdAt": 1629429322.058818,
+        "updatedAt": 1630382763.8490574
+  }
+}
+
+### Update 1 Cv
+PUT  http://localhost:8000/api/cv/6267c4c221bd94c1f2328c06 HTTP/1.1
+Content-Type: application/json
+
+{
+    "resumeName": "civizen4",
+    "imgUrl": 
+    "https://firebasestorage.googleapis.com/v0/b/civipro-4d091.appspot.com/o/templates%2FCastform.png?alt=media&token=c1b11a52-0d3d-4c1a-be97-08415fa49727",
+    "demo": true,
+    "metadata": {
+        "ownerId": "6257d971b921d0153805a5cd", 
+        "createdAt": 1629429322.058818,
+        "updatedAt": 1630382763.8490574
+  }
 }
 
 ### get all users
 GET http://localhost:8000/users/getusers HTTP/1.1
 
-### 
-PUT http://localhost:8000/api/cv/6257e03e627a51733e6bd159 HTTP/1.1
-Content-Type: application/json
-
-{
-    "test" : "123",
-    "userId": "6257d971b921d0153805a5cd"
-}
-
 ###
-DELETE http://localhost:8000/api/cv/6257e03e627a51733e6bd159 HTTP/1.1
+DELETE http://localhost:8000/api/cv/6267c59cfd3b7aa81414cd43 HTTP/1.1
 Content-Type: application/json
 
 {
-    "test" : "123",
     "userId": "6257d971b921d0153805a5cd"
 }
 

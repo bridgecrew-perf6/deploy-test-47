@@ -2,7 +2,12 @@ export const mini_demo = {
   resumeName: "civizen",
   imgUrl: 
   "https://firebasestorage.googleapis.com/v0/b/civipro-4d091.appspot.com/o/templates%2FCastform.png?alt=media&token=c1b11a52-0d3d-4c1a-be97-08415fa49727",
-  demo: true
+  demo: true,
+  metadata: {
+    ownerId: "625fc1f6be45655ab98f556c", 
+    createdAt: 1629429322.058818,
+    updatedAt: 1630382763.8490574,
+  }
 }
 
 export const data_demo = {

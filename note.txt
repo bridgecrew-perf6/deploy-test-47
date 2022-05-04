@@ -30,9 +30,18 @@ Email verification
 
 Tra lai _id, anh, ten CV trong database
 Tuan 3
-- Them goolge facebook,
-- song 5' PRv                                           // xong
-- Chuc nang chia trang 
-- Phan trang 
-- Phan update Cv, add Cv them phan xac thuc co the <scipt>
-- Xac thuc co dung nguoi dang khong
+- Them goolge facebook,                                     // xong
+- song 5' PRv                                               // xong
+- Phan trang -  Pagination                                  // xong
+- Phan update Cv, add Cv them phan xac thuc co the <scipt>  // xong
+- Xac thuc co dung nguoi dung khong                         // xong
++ Mo rong chuc nang getManyCv for user -> return nhung cv co// 
+        req.userId === cv.metadata.ownerId;                 // 
+- them 1 buoc kiem tra cv_id co ton tai trong               // xong
+- xoa session khi het cookie                                // xong
+Tuan 4
+- sua getOneCv khi public hay private                       // xong
+- check trang thai dang nhap logined?                       // xong
+- Them goolge facebook,                                     // xong
+----------------Hoi------------
+

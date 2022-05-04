@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 // google login
-import "./config/googleLogin.js";
 import { MongoClient } from "mongodb";
 import "dotenv/config";
 
@@ -12,6 +11,7 @@ import users from "./routes/users.js";
 import cvs from "./routes/cvs.js";
 import email from "./routes/email.js";
 import google from "./routes/google.js";
+import facebook from "./routes/facebook.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -19,6 +19,10 @@ const PORT = process.env.PORT || 8000;
 const URI = process.env.MDB_URI;
 
 const client = new MongoClient(URI);
+
+// use engine pug
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -42,6 +46,7 @@ async function runServer() {
     app.use("/api", auth);
     app.use("/api", cvs);
     app.use("/api", google);
+    app.use("/api", facebook);
     app.use("/users", users);
     app.use("/email", email);
     
